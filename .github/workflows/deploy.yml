@@ -20,4 +20,4 @@ jobs:
             git pull origin master
             npm install
             npm run build
-            pm2 restart potafolio || pm2 start npm --name "potafolio" -- start
+            pm2 restart portafolio || pm2 start npm --name "portafolio" -- start
