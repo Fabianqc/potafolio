@@ -116,9 +116,32 @@ export const Experience = () => {
                         </div>
                     </motion.div>
 
-                    {/* Item 4 - Tanoa Properties */}
+                    {/* Item 4 - Fundación Guerreros de Amor */}
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+                    >
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-rose-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-rose-500/20">
+                            <Briefcase className="w-5 h-5 text-rose-400" />
+                        </div>
+
+                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
+                            <div className="flex flex-col mb-2">
+                                <span className="text-sm font-medium text-rose-400">Atención Clínica</span>
+                                <h3 className="text-xl font-bold text-white">Desarrollador Full-Stack & Hosting</h3>
+                                <span className="text-gray-400 font-medium tracking-tight">Fundación de Salud</span>
+                            </div>
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                                Desarrollo integral de sistema web y provisión de infraestructura/hosting para la gestión operativa y de atenciones.
+                            </p>
+                        </div>
+                    </motion.div>
+
+                    {/* Item 5 - Tanoa Properties */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
