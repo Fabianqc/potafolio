@@ -16,8 +16,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 1033
           script: |
-            cd ~/www/portafolio-cv
+            cd ~/potafolio
             git pull origin master
             npm install
             npm run build
-            pm2 restart portafolio-cv || pm2 start npm --name "portafolio-cv" -- start
+            pm2 restart potafolio || pm2 start npm --name "potafolio" -- start
