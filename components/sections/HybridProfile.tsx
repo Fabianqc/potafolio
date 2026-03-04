@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Network, Database, LayoutTemplate } from "lucide-react";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 export const HybridProfile = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -35,12 +36,8 @@ export const HybridProfile = () => {
                             21 Años. <span className="text-violet-400">Mentalidad Senior.</span> Visión 360°.
                         </h2>
                         <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
-                            <p>
-                                A punto de graduarme en Informática en la UDO y como cofundador de Koodev.net, mi enfoque va más allá de entregar interfaces bonitas. Construyo ecosistemas.
-                            </p>
-                            <p>
-                                Comprendo la fricción entre el código y el servidor. Mi filosofía es crear software que no solo luzca bien y funcione fluido para el usuario final, sino que sea eficiente, monitoreable y seguro a nivel de sistema operativo y red.
-                            </p>
+                            <TextGenerateEffect words="A punto de graduarme en Informática en la UDO y como cofundador de Koodev.net, mi enfoque va más allá de entregar interfaces bonitas. Construyo ecosistemas." />
+                            <TextGenerateEffect words="Comprendo la fricción entre el código y el servidor. Mi filosofía es crear software que no solo luzca bien y funcione fluido para el usuario final, sino que sea eficiente, monitoreable y seguro a nivel de sistema operativo y red." />
                         </div>
                     </motion.div>
 

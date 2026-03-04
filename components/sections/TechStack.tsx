@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Layout, Database, ServerCog, Blocks } from "lucide-react";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 const stackCategories = [
     {
@@ -45,9 +46,10 @@ export const TechStack = () => {
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
                         Arsenal <span className="text-violet-400">Tecnológico</span>
                     </h2>
-                    <p className="text-lg text-gray-400">
-                        Herramientas modernas seleccionadas estratégicamente para rendimiento, escalabilidad y seguridad.
-                    </p>
+                    <TextGenerateEffect
+                        words="Herramientas modernas seleccionadas estratégicamente para rendimiento, escalabilidad y seguridad."
+                        className="text-lg text-gray-400"
+                    />
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

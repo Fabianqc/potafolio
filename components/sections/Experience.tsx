@@ -1,7 +1,82 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap } from "lucide-react";
+import { Briefcase, GraduationCap, Code2 } from "lucide-react";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+
+const experiences = [
+    {
+        id: 1,
+        title: "Licenciatura en Informática",
+        company: "Universidad de Oriente (UDO)",
+        period: "En curso (Últimos Semestres)",
+        description: "Periodo activo de fortalecimiento académico con enfoque en algoritmos avanzados, estructuras de datos, patrones de arquitectura de software y metodologías ágiles. Preparación para ingeniería de software a escala.",
+        icon: GraduationCap,
+        color: "cyan",
+        stack: ["Algoritmia", "C", "Arquitectura", "Bases de Datos"]
+    },
+    {
+        id: 2,
+        title: "Desarrollador Full-Stack",
+        company: "Alma de Nómada",
+        link: "https://almadenomada.com/",
+        period: "Desarrollo Web",
+        description: "Desarrollo end-to-end de una plataforma e-commerce de alto rendimiento. Implementación de una arquitectura frontend robusta para SEO optimizado (SSR) y un backend escalable para gestión de inventarios y logística.",
+        icon: Briefcase,
+        color: "emerald",
+        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js"]
+    },
+    {
+        id: 3,
+        title: "Creador & Desarrollador Principal",
+        company: "Shortlinks",
+        period: "Proyecto Personal",
+        description: "Ingeniería de un servicio acortador de URLs ultra-rápido diseñado para desarrolladores. Arquitectura optimizada para baja latencia (Edge computing) y manejo concurrente de redirecciones a nivel global sin rastreo publicitario.",
+        icon: Code2,
+        color: "pink",
+        stack: ["Next.js Edge", "PostgreSQL", "Redis", "Framer Motion"]
+    },
+    {
+        id: 4,
+        title: "Co-founder & Full-Stack Developer",
+        company: "Koodev.net",
+        period: "2023 - Presente",
+        description: "Liderazgo técnico en la creación de una agencia de software. Diseño de arquitecturas Cloud/On-Premise, orquestación de despliegues CI/CD y desarrollo de microservicios para clientes internacionales de alto perfil.",
+        icon: Briefcase,
+        color: "violet",
+        stack: ["NestJS", "React", "Docker", "Linux SysAdmin"]
+    },
+    {
+        id: 5,
+        title: "Arquitecto Backend & Hosting",
+        company: "Fundación de Salud Guerreros de Amor",
+        period: "Atención Clínica",
+        description: "Desarrollo y mantenimiento de un sistema integral Healthcare (HIS). Implementación de infraestructura on-premise bajo normativas de privacidad, asegurando 99.9% de uptime para operaciones vitales diarias.",
+        icon: Briefcase,
+        color: "rose",
+        stack: ["NestJS", "PostgreSQL", "Nginx", "Self-Hosted"]
+    },
+    {
+        id: 6,
+        title: "Desarrollador Full-Stack",
+        company: "Tanoa Properties",
+        period: "Software Inmobiliario",
+        description: "Ingeniería del ecosistema principal para agentes inmobiliarios. Compleja manipulación de datos geolocalizados, integración con APIs externas de bienes raíces y optimización de galerías multimedia a gran escala.",
+        icon: Briefcase,
+        color: "blue",
+        stack: ["Next.js", "AWS S3", "Prisma", "TypeScript"]
+    },
+    {
+        id: 7,
+        title: "Desarrollador Principal (Tesis)",
+        company: "Federación Venezolana de Boxeo",
+        period: "Proyecto de Tesis",
+        description: "Sistematización lógica y paramétrica a nivel nacional para la gestión oficial de torneos de boxeo. Traducción de reglamentos deportivos extremadamente complejos (AIB) a un motor de reglas backend escalable y reactivo.",
+        icon: GraduationCap,
+        color: "amber",
+        stack: ["Node.js", "React", "PostgreSQL", "WebSockets"]
+    }
+];
 
 export const Experience = () => {
     return (
@@ -22,168 +97,79 @@ export const Experience = () => {
 
                 <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/10 before:to-transparent">
 
-                    {/* Item 1 - Universidad */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-                    >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-cyan-500/20">
-                            <GraduationCap className="w-5 h-5 text-cyan-400" />
-                        </div>
+                    {experiences.map((exp, index) => {
+                        const Icon = exp.icon;
+                        const isEven = index % 2 === 0;
 
-                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-medium text-cyan-400">En curso (Últimos Semestres)</span>
-                                <h3 className="text-xl font-bold text-white">Licenciatura en Informática</h3>
-                                <span className="text-gray-400 font-medium tracking-tight">Universidad de Oriente (UDO)</span>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                                Consolidación de bases sólidas en algoritmia, estructuras de datos y arquitectura de computadores.
-                            </p>
-                        </div>
-                    </motion.div>
+                        // Map colors to distinct Tailwind classes since string interpolation of arbitrary colors might break JIT
+                        const colorStyles = {
+                            cyan: "border-cyan-500 text-cyan-400 group-hover:bg-cyan-500/20 bg-cyan-400/10 border-cyan-500/20",
+                            emerald: "border-emerald-500 text-emerald-400 group-hover:bg-emerald-500/20 bg-emerald-400/10 border-emerald-500/20",
+                            pink: "border-pink-500 text-pink-400 group-hover:bg-pink-500/20 bg-pink-400/10 border-pink-500/20",
+                            violet: "border-violet-500 text-violet-400 group-hover:bg-violet-500/20 bg-violet-400/10 border-violet-500/20",
+                            rose: "border-rose-500 text-rose-400 group-hover:bg-rose-500/20 bg-rose-400/10 border-rose-500/20",
+                            blue: "border-blue-500 text-blue-400 group-hover:bg-blue-500/20 bg-blue-400/10 border-blue-500/20",
+                            amber: "border-amber-500 text-amber-400 group-hover:bg-amber-500/20 bg-amber-400/10 border-amber-500/20",
+                        }[exp.color] || "border-gray-500 text-gray-400 group-hover:bg-gray-500/20 bg-gray-400/10 border-gray-500/20";
 
-                    {/* Item 2 - Alma de Nómada */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-                    >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-emerald-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-emerald-500/20">
-                            <Briefcase className="w-5 h-5 text-emerald-400" />
-                        </div>
+                        const borderColor = colorStyles.split(' ')[0];
+                        const textColor = colorStyles.split(' ')[1];
+                        const hoverBg = colorStyles.split(' ')[2];
+                        const badgeBg = colorStyles.split(' ')[3];
+                        const badgeBorder = colorStyles.split(' ')[4];
 
-                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-medium text-emerald-400">Desarrollo Web</span>
-                                <h3 className="text-xl font-bold text-white">Desarrollador Full-Stack</h3>
-                                <a href="https://almadenomada.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 font-medium tracking-tight hover:text-white transition-colors">
-                                    Alma de Nómada ↗
-                                </a>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                                Desarrollo end-to-end de la plataforma, implementando el frontend, backend e integración de servicios.
-                            </p>
-                        </div>
-                    </motion.div>
+                        return (
+                            <motion.div
+                                key={exp.id}
+                                initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
+                                className="relative flex flex-col md:flex-row items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active w-full"
+                            >
+                                {/* Timeline Node */}
+                                <div className={`flex items-center justify-center w-12 h-12 rounded-full border-2 ${borderColor} bg-black shadow-[0_0_15px_-3px_currentColor] ${textColor} shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-all duration-500 ${hoverBg} group-hover:scale-110`}>
+                                    <Icon className="w-5 h-5" />
+                                </div>
 
-                    {/* Item 2.5 - Shortlinks */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-                    >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-pink-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-pink-500/20">
-                            <Briefcase className="w-5 h-5 text-pink-400" />
-                        </div>
+                                {/* Content Card */}
+                                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] md:group-odd:pr-8 md:group-even:pl-8 mt-4 md:mt-0">
+                                    <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-colors backdrop-blur-sm relative overflow-hidden group-hover:bg-white/[0.04]">
 
-                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-medium text-pink-400">Proyecto Personal</span>
-                                <h3 className="text-xl font-bold text-white">Desarrollador Full-Stack</h3>
-                                <span className="text-gray-400 font-medium tracking-tight">Shortlinks</span>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                                Un acortador de links severamente rápido y diferente al resto, sin anuncios y hecho por y para desarrolladores.
-                            </p>
-                        </div>
-                    </motion.div>
+                                        {/* Subtle gradient background matches item color */}
+                                        <div className={`absolute -inset-2 opacity-0 group-hover:opacity-10 transition-opacity blur-xl bg-current ${textColor}`} />
 
-                    {/* Item 3 - Koodev */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-                    >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-violet-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-violet-500/20">
-                            <Briefcase className="w-5 h-5 text-violet-400" />
-                        </div>
+                                        <div className="relative z-10">
+                                            <div className="flex flex-col mb-3">
+                                                <span className={`text-xs font-bold uppercase tracking-wider mb-1 ${textColor}`}>{exp.period}</span>
+                                                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">{exp.title}</h3>
+                                                {exp.link ? (
+                                                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-gray-400 font-medium text-sm flex items-center gap-1 hover:text-white transition-colors w-max">
+                                                        {exp.company} ↗
+                                                    </a>
+                                                ) : (
+                                                    <span className="text-gray-400 font-medium text-sm">{exp.company}</span>
+                                                )}
+                                            </div>
+                                            <TextGenerateEffect
+                                                words={exp.description}
+                                                className="text-gray-400 text-sm leading-relaxed mb-5"
+                                            />
 
-                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-medium text-violet-400">2023 - Presente</span>
-                                <h3 className="text-xl font-bold text-white">Co-founder & Full-Stack Developer</h3>
-                                <span className="text-gray-400 font-medium tracking-tight">Koodev.net</span>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                                Liderando el desarrollo técnico y arquitectónico. Transformando requerimientos de negocio en soluciones digitales completas, infraestructura y despliegue final.
-                            </p>
-                        </div>
-                    </motion.div>
-
-                    {/* Item 4 - Fundación Guerreros de Amor */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-                    >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-rose-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-rose-500/20">
-                            <Briefcase className="w-5 h-5 text-rose-400" />
-                        </div>
-
-                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-medium text-rose-400">Atención Clínica</span>
-                                <h3 className="text-xl font-bold text-white">Desarrollador Full-Stack & Hosting</h3>
-                                <span className="text-gray-400 font-medium tracking-tight">Fundación de Salud</span>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                                Desarrollo integral de sistema web y provisión de infraestructura/hosting para la gestión operativa y de atenciones.
-                            </p>
-                        </div>
-                    </motion.div>
-
-                    {/* Item 5 - Tanoa Properties */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-                    >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-blue-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-blue-500/20">
-                            <Briefcase className="w-5 h-5 text-blue-400" />
-                        </div>
-
-                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-medium text-blue-400">Software Inmobiliario</span>
-                                <h3 className="text-xl font-bold text-white">Desarrollador Full-Stack</h3>
-                                <span className="text-gray-400 font-medium tracking-tight">Tanoa Properties</span>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                                Desarrollo del sistema web completo para agentes inmobiliarios, implementando una plataforma reconocida y robusta para la gestión de propiedades.
-                            </p>
-                        </div>
-                    </motion.div>
-
-                    {/* Item 5 - Tesis FVB */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-                    >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-amber-500 bg-black shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-amber-500/20">
-                            <GraduationCap className="w-5 h-5 text-amber-400" />
-                        </div>
-
-                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] md:group-odd:pr-8 md:group-even:pl-8">
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-medium text-amber-400">Proyecto de Tesis</span>
-                                <h3 className="text-xl font-bold text-white">Desarrollador Principal</h3>
-                                <span className="text-gray-400 font-medium tracking-tight">Federación Venezolana de Boxeo</span>
-                            </div>
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                                Sistema integral a nivel nacional para la organización de torneos de boxeo, aplicando la lógica compleja y reglas del boxeo a una arquitectura de software moderna.
-                            </p>
-                        </div>
-                    </motion.div>
+                                            {/* Tech Stack Matrix */}
+                                            <div className="flex flex-wrap gap-2">
+                                                {exp.stack.map((tech) => (
+                                                    <span key={tech} className={`text-[10px] font-mono px-2.5 py-1 rounded-md border ${badgeBg} ${badgeBorder} ${textColor} transition-colors`}>
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
 
                 </div>
             </div>
